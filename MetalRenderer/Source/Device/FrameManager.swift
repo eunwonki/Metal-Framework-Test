@@ -46,7 +46,7 @@ class FrameManager: NSObject, ObservableObject {
   private override init() {
     super.init()
 
-    CameraManager.shared.set(self, queue: videoOutputQueue)
+    DeviceCameraManager.shared.set(self, queue: videoOutputQueue)
   }
 }
 

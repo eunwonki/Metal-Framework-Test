@@ -32,7 +32,7 @@
 
 import AVFoundation
 
-class CameraManager: ObservableObject {
+class DeviceCameraManager: ObservableObject {
     enum Status {
         case unconfigured
         case configured
@@ -40,7 +40,7 @@ class CameraManager: ObservableObject {
         case failed
     }
 
-    static let shared = CameraManager()
+    static let shared = DeviceCameraManager()
 
     @Published var error: CameraError?
 

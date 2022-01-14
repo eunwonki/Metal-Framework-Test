@@ -38,7 +38,7 @@ class ContentViewModel: ObservableObject {
 
     private let context = CIContext()
 
-    private let cameraManager = CameraManager.shared
+    private let cameraManager = DeviceCameraManager.shared
     private let frameManager = FrameManager.shared
 
     init() {
