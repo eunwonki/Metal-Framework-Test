@@ -20,8 +20,13 @@ class Camera: Node {
         return matrix_identity_float4x4
     }
     
-    init(name: String, cameraType: CameraTypes){
+    init(name: String, cameraType: CameraTypes) {
         super.init(name: name)
         self.cameraType = cameraType
+    }
+    
+    func lookAt(pos: float3) {
+        setPosition(float3(pos.x, pos.y, pos.z + 1))
+        setRotation(float3.zero)
     }
 }

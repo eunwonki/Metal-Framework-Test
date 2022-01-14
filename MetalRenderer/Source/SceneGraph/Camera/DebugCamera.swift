@@ -1,3 +1,4 @@
+import Foundation
 import simd
 
 class DebugCamera: Camera {
@@ -12,36 +13,40 @@ class DebugCamera: Camera {
         super.init(name: "Debug", cameraType: .Debug)
     }
 
-#if os(macOS)
-    override func doUpdate() {
-        if(Keyboard.IsKeyPressed(.leftArrow)){
-            self.moveX(-GameTime.DeltaTime)
-        }
+    #if os(macOS)
+        override func doUpdate() {
+            if Keyboard.IsKeyPressed(.leftArrow) {
+                self.moveX(-GameTime.DeltaTime)
+            }
         
-        if(Keyboard.IsKeyPressed(.rightArrow)){
-            self.moveX(GameTime.DeltaTime)
-        }
+            if Keyboard.IsKeyPressed(.rightArrow) {
+                self.moveX(GameTime.DeltaTime)
+            }
         
-        if(Keyboard.IsKeyPressed(.upArrow)){
-            self.moveY(GameTime.DeltaTime)
-        }
+            if Keyboard.IsKeyPressed(.upArrow) {
+                self.moveY(GameTime.DeltaTime)
+            }
         
-        if(Keyboard.IsKeyPressed(.downArrow)){
-            self.moveY(-GameTime.DeltaTime)
-        }
+            if Keyboard.IsKeyPressed(.downArrow) {
+                self.moveY(-GameTime.DeltaTime)
+            }
         
-        if(Mouse.IsMouseButtonPressed(button: .right)) {
-            self.rotate(Mouse.GetDY() * GameTime.DeltaTime,
-                        Mouse.GetDX() * GameTime.DeltaTime,
-                        0)
-        }
+            if Mouse.IsMouseButtonPressed(button: .right) {
+                self.rotate(Mouse.GetDY() * GameTime.DeltaTime,
+                            Mouse.GetDX() * GameTime.DeltaTime,
+                            0)
+            }
         
-        if(Mouse.IsMouseButtonPressed(button: .center)) {
-            self.moveX(-Mouse.GetDX() * GameTime.DeltaTime)
-            self.moveY(Mouse.GetDY() * GameTime.DeltaTime)
-        }
+            if Mouse.IsMouseButtonPressed(button: .center) {
+                self.moveX(-Mouse.GetDX() * GameTime.DeltaTime)
+                self.moveY(Mouse.GetDY() * GameTime.DeltaTime)
+            }
         
-        self.moveZ(-Mouse.GetDWheel() * 0.1)
-    }
-#endif
+            self.moveZ(-Mouse.GetDWheel() * 0.1)
+        }
+    #endif
+    
+    #if os(iOS)
+        override func doUpdate() {}
+    #endif
 }

@@ -216,9 +216,7 @@
 		9C290EA127910A570028AD06 /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				9C290EA227910A670028AD06 /* Keyboard.swift */,
-				9C290EA327910A670028AD06 /* KeyCodes.swift */,
-				9C290EA427910A670028AD06 /* Mouse.swift */,
+				9C290EDC27914FDE0028AD06 /* Mac */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -281,6 +279,16 @@
 				9C290EC727910DB60028AD06 /* VertexDescriptorLibrary.swift */,
 			);
 			path = Library;
+			sourceTree = "<group>";
+		};
+		9C290EDC27914FDE0028AD06 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				9C290EA227910A670028AD06 /* Keyboard.swift */,
+				9C290EA327910A670028AD06 /* KeyCodes.swift */,
+				9C290EA427910A670028AD06 /* Mouse.swift */,
+			);
+			path = Mac;
 			sourceTree = "<group>";
 		};
 		9C46BDDD278C0F88009A8EA9 /* Resources */ = {

@@ -11,6 +11,11 @@ class GameObject: Node {
         _mesh = Entities.Meshes[meshType]
     }
     
+    init(name: String, mesh: Mesh) {
+        super.init(name: name)
+        _mesh = mesh
+    }
+    
     override func update(){
         _modelConstants.modelMatrix = self.modelMatrix
         
