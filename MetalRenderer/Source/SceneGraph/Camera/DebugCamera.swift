@@ -2,12 +2,16 @@ import Foundation
 import simd
 
 class DebugCamera: Camera {
+
+    // TODO: perspective projection matrix zoom 조금만 커져도 사라지는 문제 해결.
     override var projectionMatrix: matrix_float4x4 {
         return matrix_float4x4.perspective(degreesFov: 45.0,
                                            aspectRatio: Renderer.AspectRatio,
-                                           near: 0.1,
-                                           far: 1000)
+                                           near: 0.01, far: 100,
+                                           zoom: self.zoom)
     }
+
+    var zoom: Float = 1.0
     
     init() {
         super.init(name: "Debug", cameraType: .Debug)
@@ -47,6 +51,14 @@ class DebugCamera: Camera {
     #endif
     
     #if os(iOS)
-        override func doUpdate() {}
+        override func doUpdate() {
+            if Gesture.isZooming {
+                zoom += Gesture.zoomDelta
+            }
+            
+            if Gesture.isDragging {
+                // orbit camera 구현.
+            }
+        }
     #endif
 }

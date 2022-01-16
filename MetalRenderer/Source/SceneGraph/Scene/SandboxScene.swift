@@ -11,6 +11,7 @@ func + (left: float3, right: float3) -> float3 {
 class SandboxScene: SceneNode {
     var debugCamera = DebugCamera()
     var cruiser = Cruiser()
+    var scene: GameObject!
     var sun = Sun()
     
     override func buildScene() {
@@ -34,7 +35,7 @@ class SandboxScene: SceneNode {
         
         #if os(iOS)
         let sceneMesh = ModelMesh(modelName: "scene")
-        let scene = GameObject(name: "scene", mesh: sceneMesh)
+        scene = GameObject(name: "scene", mesh: sceneMesh)
         scene.setMaterialColor(float4(1, 0, 0, 1))
         scene.setMaterialAmbient(0.01)
         scene.setMaterialShininess(10)
@@ -42,7 +43,7 @@ class SandboxScene: SceneNode {
         addChild(scene)
         
         let center = (sceneMesh.boundingBox.maxBounds
-                      + sceneMesh.boundingBox.minBounds) / 2
+            + sceneMesh.boundingBox.minBounds) / 2
         
         debugCamera.lookAt(pos: center)
         #endif
@@ -61,7 +62,11 @@ class SandboxScene: SceneNode {
     
     #if os(iOS)
     override func doUpdate() {
-        
+        // TODO: Rotation By Point 구현
+        if Gesture.isDragging {
+            scene.rotateX(Float(Gesture.currentDragDiff.height * 0.1) * GameTime.DeltaTime)
+            scene.rotateX(Float(Gesture.currentDragDiff.width * 0.1) * GameTime.DeltaTime)
+        }
     }
     #endif
 }

@@ -5,30 +5,42 @@
 //  Created by skia on 2022/01/06.
 //
 
-import SwiftUI
 import MetalKit
+import SwiftUI
 
 struct ContentView: View {
-#if !targetEnvironment(simulator)
-    @StateObject private var model = ContentViewModel()
-#endif
-    
-    static let frameIpad11 = CGRect(x: 0, y: 0, width: 1194, height: 834)
-    private var metalView = MetalView(mtkView: MTKView(frame: frameIpad11))
+    #if !targetEnvironment(simulator)
+        @StateObject private var model = ContentViewModel()
+    #endif
 
     var body: some View {
+        let magnification = MagnificationGesture()
+            .onChanged {
+                Gesture.OnZooming(magnitude: $0.magnitude)
+            }
+            .onEnded { _ in
+                Gesture.OnZoomEnd()
+            }
+
         let drag = DragGesture()
             .onChanged {
-                metalView.onDrag(start: $0.startLocation,
-                                 translation: $0.translation)
+                Gesture.OnDragging(start: $0.startLocation,
+                                   translation: $0.translation)
             }
-        
-        ZStack{
+            .onEnded { _ in
+                Gesture.OnDragEnd()
+            }
+
+        ZStack {
             #if !targetEnvironment(simulator)
-            FrameView(image: model.frame)
+                FrameView(image: model.frame)
             #endif
-            metalView
+
+            MetalView(mtkView: MTKView())
+            #if os(iOS)
                 .gesture(drag)
+                .gesture(magnification)
+            #endif
         }
     }
 }

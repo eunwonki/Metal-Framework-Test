@@ -44,7 +44,7 @@ extension matrix_float4x4 {
         self = matrix_multiply(self, result)
     }
     
-    mutating func scale(axis: SIMD3<Float>){
+    mutating func scale(axis: SIMD3<Float>) {
         var result = matrix_identity_float4x4
         
         let x: Float = axis.x
@@ -105,7 +105,10 @@ extension matrix_float4x4 {
     }
     
     //https://gamedev.stackexchange.com/questions/120338/what-does-a-perspective-projection-matrix-look-like-in-opengl
-    static func perspective(degreesFov: Float, aspectRatio: Float, near: Float, far: Float)->matrix_float4x4{
+    static func perspective(degreesFov: Float,
+                            aspectRatio: Float,
+                            near: Float, far: Float,
+                            zoom: Float)->matrix_float4x4{
         let fov = degreesFov.toRadians
         
         let t: Float = tan(fov / 2)
@@ -124,4 +127,8 @@ extension matrix_float4x4 {
         )
         return result
     }
+}
+
+public func * (rhs: matrix_float4x4, lhs: matrix_float4x4) -> matrix_float4x4 {
+    return simd_mul(rhs, lhs)
 }

@@ -23,7 +23,9 @@ struct MetalView: UIViewRepresentable {
     
     func updateUIView(_ uiView: UIViewType,
                       context: UIViewRepresentableContext<MetalView>)
-    { }
+    {
+        mtkView.draw()
+    }
 
     func makeCoordinator() -> Coordinator {
         mtkView.device = MTLCreateSystemDefaultDevice()
@@ -38,13 +40,5 @@ struct MetalView: UIViewRepresentable {
     func makeUIView(context: Context) -> MTKView {
         mtkView.delegate = context.coordinator
         return mtkView
-    }
-
-    func onDrag(start: CGPoint, translation: CGSize) {
-//        let scrollWidthRatio = Float(translation.width) / 10000 * -1
-//        let scrollHeightRatio = Float(translation.height) / 10000
-//        camNode.eulerAngles.y += Float(-2 * Double.pi) * scrollWidthRatio
-//        camNode.eulerAngles.x += Float(-Double.pi) * scrollHeightRatio
-        mtkView.draw()
     }
 }

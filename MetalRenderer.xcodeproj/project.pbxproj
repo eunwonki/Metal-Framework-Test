@@ -56,6 +56,7 @@
 		9C290ED72791362B0028AD06 /* cruiser.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 9C290ED52791362A0028AD06 /* cruiser.mtl */; };
 		9C290ED9279136630028AD06 /* PartyPirateParot.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C290ED8279136630028AD06 /* PartyPirateParot.png */; };
 		9C290EDB279137310028AD06 /* Cruiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C290EDA279137310028AD06 /* Cruiser.swift */; };
+		9C290EDE2793EB200028AD06 /* Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C290EDD2793EB200028AD06 /* Gesture.swift */; };
 		9C88534E27867AE600EDDD26 /* MetalRendererApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C88534D27867AE600EDDD26 /* MetalRendererApp.swift */; };
 		9C88535027867AE600EDDD26 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C88534F27867AE600EDDD26 /* ContentView.swift */; };
 		9C88535227867AE800EDDD26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C88535127867AE800EDDD26 /* Assets.xcassets */; };
@@ -119,6 +120,7 @@
 		9C290ED52791362A0028AD06 /* cruiser.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cruiser.mtl; sourceTree = "<group>"; };
 		9C290ED8279136630028AD06 /* PartyPirateParot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PartyPirateParot.png; sourceTree = "<group>"; };
 		9C290EDA279137310028AD06 /* Cruiser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cruiser.swift; sourceTree = "<group>"; };
+		9C290EDD2793EB200028AD06 /* Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gesture.swift; sourceTree = "<group>"; };
 		9C88534A27867AE600EDDD26 /* MetalRenderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalRenderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C88534D27867AE600EDDD26 /* MetalRendererApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRendererApp.swift; sourceTree = "<group>"; };
 		9C88534F27867AE600EDDD26 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -216,7 +218,8 @@
 		9C290EA127910A570028AD06 /* Input */ = {
 			isa = PBXGroup;
 			children = (
-				9C290EDC27914FDE0028AD06 /* Mac */,
+				9C290EDF2793EB250028AD06 /* iOS */,
+				9C290EDC27914FDE0028AD06 /* macOS */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -281,14 +284,22 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
-		9C290EDC27914FDE0028AD06 /* Mac */ = {
+		9C290EDC27914FDE0028AD06 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
 				9C290EA227910A670028AD06 /* Keyboard.swift */,
 				9C290EA327910A670028AD06 /* KeyCodes.swift */,
 				9C290EA427910A670028AD06 /* Mouse.swift */,
 			);
-			path = Mac;
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		9C290EDF2793EB250028AD06 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				9C290EDD2793EB200028AD06 /* Gesture.swift */,
+			);
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		9C46BDDD278C0F88009A8EA9 /* Resources */ = {
@@ -480,6 +491,7 @@
 				9C290E842790FF0F0028AD06 /* Pointer.swift in Sources */,
 				9C290E832790FF0F0028AD06 /* CubeCollection.swift in Sources */,
 				9C290E972791034D0028AD06 /* InstancedShaders.metal in Sources */,
+				9C290EDE2793EB200028AD06 /* Gesture.swift in Sources */,
 				9C88536E2786B59E00EDDD26 /* CGImageExtension.swift in Sources */,
 				9C88536A2786B42E00EDDD26 /* FrameManager.swift in Sources */,
 				9C88534E27867AE600EDDD26 /* MetalRendererApp.swift in Sources */,

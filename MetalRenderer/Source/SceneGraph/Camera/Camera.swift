@@ -26,7 +26,7 @@ class Camera: Node {
     }
     
     func lookAt(pos: float3) {
-        setPosition(float3(pos.x, pos.y, pos.z + 1))
+        setPosition(float3(pos.x, pos.y, pos.z + 2))
         setRotation(float3.zero)
     }
 }
