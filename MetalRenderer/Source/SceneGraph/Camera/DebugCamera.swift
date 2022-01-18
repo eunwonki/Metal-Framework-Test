@@ -53,6 +53,7 @@ class DebugCamera: Camera {
     #if os(iOS)
         override func doUpdate() {
             if Gesture.isZooming {
+                // TODO: zoom 더 정교하게 구현할 것...
                 zoom += Gesture.zoomDelta
             }
             

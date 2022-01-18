@@ -134,6 +134,7 @@
 		9C88536F2786B5CC00EDDD26 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		9C8853732786BDC200EDDD26 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C8853752786BF4A00EDDD26 /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		9CC326B727969C47001895AF /* FunctionTester.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FunctionTester.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +319,7 @@
 		9C88534127867AE600EDDD26 = {
 			isa = PBXGroup;
 			children = (
+				9CC326B727969C47001895AF /* FunctionTester.playground */,
 				9C88534C27867AE600EDDD26 /* MetalRenderer */,
 				9C88534B27867AE600EDDD26 /* Products */,
 			);

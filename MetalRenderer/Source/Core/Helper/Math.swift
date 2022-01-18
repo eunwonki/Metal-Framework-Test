@@ -28,6 +28,11 @@ extension Float {
 
 extension matrix_float4x4 {
     mutating func translate(direction: SIMD3<Float>){
+        self = self.translateMatrix(direction: direction)
+    }
+    
+    func translateMatrix(direction: SIMD3<Float>)
+    -> matrix_float4x4 {
         var result = matrix_identity_float4x4
         
         let x: Float = direction.x
@@ -41,7 +46,7 @@ extension matrix_float4x4 {
             SIMD4<Float>(x,y,z,1)
         )
         
-        self = matrix_multiply(self, result)
+        return matrix_multiply(self, result)
     }
     
     mutating func scale(axis: SIMD3<Float>) {
@@ -63,6 +68,12 @@ extension matrix_float4x4 {
     
     
     mutating func rotate(angle: Float, axis: SIMD3<Float>){
+        self = self.rotatingMatrix(angle: angle, axis: axis)
+    }
+    
+    func rotatingMatrix(angle: Float,
+                        axis: float3)
+    -> matrix_float4x4 {
         var result = matrix_identity_float4x4
         
         let x: Float = axis.x
@@ -101,7 +112,8 @@ extension matrix_float4x4 {
             SIMD4<Float>(r1c4, r2c4, r3c4, r4c4)
         )
         
-        self = matrix_multiply(self, result)
+        return matrix_multiply(self, result)
+    }
     }
     
     //https://gamedev.stackexchange.com/questions/120338/what-does-a-perspective-projection-matrix-look-like-in-opengl
@@ -127,8 +139,4 @@ extension matrix_float4x4 {
         )
         return result
     }
-}
-
-public func * (rhs: matrix_float4x4, lhs: matrix_float4x4) -> matrix_float4x4 {
-    return simd_mul(rhs, lhs)
 }

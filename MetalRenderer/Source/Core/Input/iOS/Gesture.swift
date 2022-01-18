@@ -20,12 +20,10 @@ class Gesture {
     public static func OnDragging(start: CGPoint, translation: CGSize) {
         isDragging = true
         currentDragDiff = translation
-        NSLog("On Dragging")
     }
     
     public static func OnDragEnd() {
         isDragging = false
-        NSLog("On Drag End")
     }
     
     public static func OnZooming(magnitude: CGFloat) {

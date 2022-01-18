@@ -13,6 +13,7 @@ class SandboxScene: SceneNode {
     var cruiser = Cruiser()
     var scene: GameObject!
     var sun = Sun()
+    var pivot = float3()
     
     override func buildScene() {
         debugCamera.setPosition(0, 0, 1)
@@ -42,10 +43,10 @@ class SandboxScene: SceneNode {
         scene.setMaterialSpecular(5)
         addChild(scene)
         
-        let center = (sceneMesh.boundingBox.maxBounds
+        pivot = (sceneMesh.boundingBox.maxBounds
             + sceneMesh.boundingBox.minBounds) / 2
         
-        debugCamera.lookAt(pos: center)
+        debugCamera.lookAt(pos: pivot)
         #endif
     }
     
@@ -62,10 +63,12 @@ class SandboxScene: SceneNode {
     
     #if os(iOS)
     override func doUpdate() {
-        // TODO: Rotation By Point 구현
+        // TODO: Rotation By Pivot 좀 더 정교하게 구현.
         if Gesture.isDragging {
-            scene.rotateX(Float(Gesture.currentDragDiff.height * 0.1) * GameTime.DeltaTime)
-            scene.rotateX(Float(Gesture.currentDragDiff.width * 0.1) * GameTime.DeltaTime)
+            let xdiff = Float(Gesture.currentDragDiff.height * 0.1) * GameTime.DeltaTime
+            let ydiff = -Float(Gesture.currentDragDiff.width * 0.1) * GameTime.DeltaTime
+            
+            scene.rotateAround(pivot, xdiff, ydiff, 0)
         }
     }
     #endif
